@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCode Hackathon 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #222;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #667eea;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(to bottom, rgba(102, 126, 234, 0.1), transparent);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Cards Section */
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #667eea;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #667eea;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 52%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 52%;
+            margin-right: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-dot {
+                left: 0;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 30px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#tracks">Tracks</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#prizes">Prizes</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <h1>🚀 TechCode Hackathon 2026</h1>
+        <p>Build. Innovate. Win.</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Welcome to the Future of Technology</h2>
+            <p>Join 500+ developers, designers, and innovators for 48 hours of non-stop coding and creativity.</p>
+            <button class="cta-button">Register Now</button>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <h2>About Hackathon</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>💡 Innovation</h3>
+                    <p>Bring your ideas to life and create the next breakthrough technology that will change the world.</p>
+                </div>
+                <div class="card">
+                    <h3>🤝 Collaboration</h3>
+                    <p>Work with talented teams, make new friends, and build amazing projects together in a supportive environment.</p>
+                </div>
+                <div class="card">
+                    <h3>🎁 Amazing Prizes</h3>
+                    <p>Win cash prizes, tech gadgets, internship opportunities, and exclusive deals from top companies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tracks Section -->
+        <section class="section" id="tracks">
+            <h2>Hackathon Tracks</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>🎮 Gaming & VR</h3>
+                    <p>Create immersive gaming experiences and virtual reality applications that push the boundaries of entertainment.</p>
+                </div>
+                <div class="card">
+                    <h3>🤖 AI & Machine Learning</h3>
+                    <p>Build intelligent systems and explore the possibilities of artificial intelligence and deep learning technologies.</p>
+                </div>
+                <div class="card">
+                    <h3>🌍 Web Development</h3>
+                    <p>Develop cutting-edge web applications and progressive web apps that solve real-world problems.</p>
+                </div>
+                <div class="card">
+                    <h3>📱 Mobile Apps</h3>
+                    <p>Create powerful mobile applications for iOS and Android that bring value to users worldwide.</p>
+                </div>
+                <div class="card">
+                    <h3>🔐 Cybersecurity</h3>
+                    <p>Develop security solutions that protect digital assets and make the internet safer for everyone.</p>
+                </div>
+                <div class="card">
+                    <h3>💚 Social Impact</h3>
+                    <p>Build applications that address social challenges and create positive impact in communities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section class="section" id="schedule">
+            <h2>Event Schedule</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Day 1 - Friday, April 25</h4>
+                        <p><strong>09:00 AM:</strong> Registration & Breakfast</p>
+                        <p><strong>10:00 AM:</strong> Opening Ceremony & Keynote</p>
+                        <p><strong>12:00 PM:</strong> Team Formation & Kickoff</p>
+                        <p><strong>01:00 PM:</strong> Lunch & Mentoring Begins</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Day 2 - Saturday, April 26</h4>
+                        <p><strong>08:00 AM:</strong> Breakfast</p>
+                        <p><strong>12:00 PM:</strong> Lunch Break</p>
+                        <p><strong>06:00 PM:</strong> Dinner</p>
+                        <p><strong>11:59 PM:</strong> Submission Deadline</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Day 3 - Sunday, April 27</h4>
+                        <p><strong>09:00 AM:</strong> Project Judging Begins</p>
+                        <p><strong>01:00 PM:</strong> Closing Ceremony</p>
+                        <p><strong>02:00 PM:</strong> Winner Announcement & Awards</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prizes Section -->
+        <section class="section" id="prizes">
+            <h2>Prizes & Rewards</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>🥇 1st Place</h3>
+                    <p><strong>$10,000</strong> Cash Prize + MacBook Pro + 6-Month Internship Offer</p>
+                </div>
+                <div class="card">
+                    <h3>🥈 2nd Place</h3>
+                    <p><strong>$5,000</strong> Cash Prize + iPad + 3-Month Internship Offer</p>
+                </div>
+                <div class="card">
+                    <h3>🥉 3rd Place</h3>
+                    <p><strong>$2,000</strong> Cash Prize + Apple Watch + Mentorship Program</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <h3>TechCode Hackathon 2026</h3>
+        <p>📧 Email: hello@techcodehackathon.com</p>
+        <p>📱 Phone: +1 (555) 123-4567</p>
+        <p>📍 Location: Tech Innovation Hub, Silicon Valley</p>
+        <p>&copy; 2026 TechCode. All rights reserved.</p>
+    </footer>
+</body>
+</html>
